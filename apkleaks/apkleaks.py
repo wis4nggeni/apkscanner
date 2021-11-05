@@ -33,6 +33,8 @@ class APKLeaks:
 		self.tempdir = tempfile.mkdtemp(prefix=self.prefix)
 		self.main_dir = os.path.dirname(os.path.realpath(__file__))
 		self.output = "/results/temp/"+filename+".txt"
+		if not os.path.exists(self.output):
+			os.makedirs(self.output)
 		self.fileout = open(self.output, "%s" % ("w" if self.json else "a"))
 		self.pattern = os.path.join(str(Path(self.main_dir).parent), "config", "regexes.json") if args.pattern is None else args.pattern
 		self.jadx = find_executable("jadx") if find_executable("jadx") is not None else os.path.join(str(Path(self.main_dir).parent), "jadx", "bin", "jadx%s" % (".bat" if os.name == "nt" else "")).replace("\\","/")
