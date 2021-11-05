@@ -80,6 +80,7 @@ class APKLeaks:
 				sys.exit(util.writeln("\n** Aborted.", col.FAIL))
 		if os.path.isfile(self.file):
 			print("pathisfiles")
+			print(self.file)
 			try:
 				print("self apk info")
 				self.apk = self.apk_info()
