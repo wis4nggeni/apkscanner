@@ -42,6 +42,7 @@ class APKLeaks:
 		return APK(self.file)
 
 	def dependencies(self):
+		print("dependenciescalled")
 		exter = "https://github.com/skylot/jadx/releases/download/v1.2.0/jadx-1.2.0.zip"
 		try:
 			with closing(urlopen(exter)) as jadx:
@@ -49,6 +50,7 @@ class APKLeaks:
 					zfile.extractall(os.path.join(str(Path(self.main_dir).parent), "jadx"))
 			os.chmod(self.jadx, 33268)
 		except Exception as error:
+			print("errorondependencies")
 			util.writeln(str(error), col.WARNING)
 			sys.exit()
 
