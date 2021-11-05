@@ -8,6 +8,7 @@ import shutil
 import sys
 import tempfile
 import threading
+import filecmp
 
 from contextlib import closing
 from distutils.spawn import find_executable
@@ -149,6 +150,17 @@ class APKLeaks:
 		if self.scanned:
 			self.fileout.write("%s" % (json.dumps(self.out_json, indent=4) if self.json else ""))
 			self.fileout.close()
+			if os.path.exists("/results/"+self.file):
+				a = "compare txt, if different replace, if same do nothing"
+				fileold = "/results/"+self.file
+				filenew = self.output
+				result = filecmp.cmp(fileold, filenew, shallow=False)
+				if result:
+					print("New Findings on : "+self.file)
+					os.remove(fileold)
+					shutil.move(filenew, fileold)
+				else:
+					os.remove(filenew)
 			print("%s\n** Results saved into '%s%s%s%s'%s." % (col.HEADER, col.ENDC, col.OKGREEN, self.output, col.HEADER, col.ENDC))
 		else:
 			self.fileout.close()
