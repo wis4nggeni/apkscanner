@@ -25,7 +25,7 @@ class APKLeaks:
 	def __init__(self, args):
 		self.apk = None
 		self.file = args
-		self.json = args.json
+		self.json = false
 		self.disarg = args.args
 		self.prefix = "apkleaks-"
 		self.tempdir = tempfile.mkdtemp(prefix=self.prefix)
