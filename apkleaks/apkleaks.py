@@ -25,7 +25,8 @@ from apkleaks.utils import util
 class APKLeaks:
 	def __init__(self, args, filename):
 		self.apk = None
-		self.file = filename
+		self.file = "./APKs/"+filename+".apk"
+		self.package = filename
 		self.json = args.json
 		self.disarg = args.args
 		self.prefix = "result-"
@@ -150,7 +151,7 @@ class APKLeaks:
 		if self.scanned:
 			self.fileout.write("%s" % (json.dumps(self.out_json, indent=4) if self.json else ""))
 			self.fileout.close()
-			fileold = "/results/" + self.file
+			fileold = "/results/" + self.package
 			filenew = self.output
 			if os.path.exists(fileold):
 				a = "compare txt, if different replace, if same do nothing"

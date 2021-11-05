@@ -25,7 +25,7 @@ class util:
 						for line in handle.readlines():
 							mo = matcher.search(line)
 							if mo:
-								foundpath = "\npath : "+filepath
+								foundpath = "\npath : "+filepath+"\n"
 								found.append(mo.group()+foundpath)
 					except Exception:
 						pass
