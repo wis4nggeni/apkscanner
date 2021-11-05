@@ -34,7 +34,7 @@ def main():
 	    line = line.strip()
 	    print(args.file)
 	    parser = argparse.ArgumentParser()
-        arg = parser.parse_args()
+		arg = parser.parse_args()
         arg.file = line+".apk"
         init = APKLeaks(arg)
 	    try:
