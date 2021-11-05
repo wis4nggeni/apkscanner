@@ -32,7 +32,7 @@ def main():
 	init = APKLeaks(args)
 	a_file = open(args.file, "r")
 	for line in a_file:
-	    args.file = line
+	    args.file = line+".apk"
 	    print(args.file)
 	    try:
 	        init.integrity()
