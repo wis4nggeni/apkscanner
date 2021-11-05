@@ -25,7 +25,8 @@ class util:
 						for line in handle.readlines():
 							mo = matcher.search(line)
 							if mo:
-								found.append(mo.group())
+								foundpath = "\npath : "+filepath
+								found.append(mo.group()+foundpath)
 					except Exception:
 						pass
 		return sorted(list(set(found)))

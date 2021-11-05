@@ -27,7 +27,7 @@ class APKLeaks:
 		self.file = filename
 		self.json = args.json
 		self.disarg = args.args
-		self.prefix = "apkleaks-"
+		self.prefix = "result-"
 		self.tempdir = tempfile.mkdtemp(prefix=self.prefix)
 		self.main_dir = os.path.dirname(os.path.realpath(__file__))
 		self.output = tempfile.mkstemp(suffix=".%s" % ("json" if self.json else "txt"), prefix=self.prefix)[1] if args.output is None else args.output
