@@ -32,6 +32,7 @@ def main():
 	init = APKLeaks(args)
 	a_file = open(args.file, "r")
 	for line in a_file:
+	    line = line.strip()
 	    args.file = line+".apk"
 	    print(args.file)
 	    try:
