@@ -53,7 +53,7 @@ class APKLeaks:
 			sys.exit()
 
 	def integrity(self):
-	    print("integritycalled")
+		print("integritycalled")
 		if os.path.exists(self.jadx) is False:
 			util.writeln("Can't find jadx binary.", col.WARNING)
 			valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
@@ -77,7 +77,7 @@ class APKLeaks:
 			else:
 				sys.exit(util.writeln("\n** Aborted.", col.FAIL))
 		if os.path.isfile(self.file):
-		    print("pathisfiles")
+			print("pathisfiles")
 			try:
 				self.apk = self.apk_info()
 			except Exception as error:
