@@ -22,10 +22,10 @@ from apkleaks.colors import color as col
 from apkleaks.utils import util
 
 class APKLeaks:
-	def __init__(self, args):
+	def __init__(self, args, filename):
 		self.apk = None
-		self.file = args
-		self.json = false
+		self.file = filename
+		self.json = args.json
 		self.disarg = args.args
 		self.prefix = "apkleaks-"
 		self.tempdir = tempfile.mkdtemp(prefix=self.prefix)
