@@ -30,9 +30,14 @@ def main():
 	header()
 	args = argument()
 	init = APKLeaks(args)
-	try:
-		init.integrity()
-		init.decompile()
-		init.scanning()
-	finally:
-		init.cleanup()
+	a_file = open(args.file, "r")
+	for line in a_file:
+	    args.file = line
+	    print(args.file)
+	    try:
+	        init.integrity()
+	        init.decompile()
+	        init.scanning()
+	    finally:
+	        init.cleanup()
+	a_file.close()
