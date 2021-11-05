@@ -81,8 +81,10 @@ class APKLeaks:
 		if os.path.isfile(self.file):
 			print("pathisfiles")
 			try:
+				print("self apk info")
 				self.apk = self.apk_info()
 			except Exception as error:
+				print("exception on self apk info")
 				util.writeln(str(error), col.WARNING)
 				sys.exit()
 			else:
