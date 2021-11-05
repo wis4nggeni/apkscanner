@@ -49,7 +49,6 @@ class APKLeaks:
 					zfile.extractall(os.path.join(str(Path(self.main_dir).parent), "jadx"))
 			os.chmod(self.jadx, 33268)
 		except Exception as error:
-		    print("exceptdependencies")
 			util.writeln(str(error), col.WARNING)
 			sys.exit()
 
