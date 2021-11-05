@@ -33,11 +33,7 @@ def main():
     # noinspection PyInterpreter
     for line in a_file:
         line = line.strip()
-        print(args.file)
-        #parser = argparse.ArgumentParser()
-        #arg = parser.parse_args()
-        #arg.file = line+".apk"
-        #init = APKLeaks(arg)
+        init = APKLeaks(line+".apk")
         try:
             init.integrity()
             init.decompile()
