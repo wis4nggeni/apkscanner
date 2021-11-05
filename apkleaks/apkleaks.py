@@ -49,10 +49,12 @@ class APKLeaks:
 					zfile.extractall(os.path.join(str(Path(self.main_dir).parent), "jadx"))
 			os.chmod(self.jadx, 33268)
 		except Exception as error:
+		    print("exceptdependencies")
 			util.writeln(str(error), col.WARNING)
 			sys.exit()
 
 	def integrity(self):
+	    print("integritycalled")
 		if os.path.exists(self.jadx) is False:
 			util.writeln("Can't find jadx binary.", col.WARNING)
 			valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
@@ -76,6 +78,7 @@ class APKLeaks:
 			else:
 				sys.exit(util.writeln("\n** Aborted.", col.FAIL))
 		if os.path.isfile(self.file):
+		    print("pathisfile")
 			try:
 				self.apk = self.apk_info()
 			except Exception as error:
