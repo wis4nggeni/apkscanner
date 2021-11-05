@@ -160,8 +160,10 @@ class APKLeaks:
 					os.remove(fileold)
 					shutil.move(filenew, fileold)
 				else:
+					print("No new findings")
 					os.remove(filenew)
 			else:
+				print("first time scanned, saving results")
 				shutil.move(filenew, fileold)
 			print("%s\n** Results saved into '%s%s%s%s'%s." % (col.HEADER, col.ENDC, col.OKGREEN, self.output, col.HEADER, col.ENDC))
 		else:
