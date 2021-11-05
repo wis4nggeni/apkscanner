@@ -32,8 +32,9 @@ class APKLeaks:
 		self.prefix = "result-"
 		self.tempdir = tempfile.mkdtemp(prefix=self.prefix)
 		self.main_dir = os.path.dirname(os.path.realpath(__file__))
-		self.output = "/results/temp/"+filename+".txt"
+		self.output = self.main_dir+"/results/temp/"+filename+".txt"
 		if not os.path.exists(self.output):
+			print("file doesn't exist")
 			os.makedirs(self.output)
 		self.fileout = open(self.output, "%s" % ("w" if self.json else "a"))
 		self.pattern = os.path.join(str(Path(self.main_dir).parent), "config", "regexes.json") if args.pattern is None else args.pattern
