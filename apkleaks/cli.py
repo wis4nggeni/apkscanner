@@ -29,12 +29,14 @@ def argument():
 def main():
 	header()
 	args = argument()
-	init = APKLeaks(args)
 	a_file = open(args.file, "r")
 	for line in a_file:
 	    line = line.strip()
-	    args.file = line+".apk"
 	    print(args.file)
+	    parser = argparse.ArgumentParser()
+        arg = parser.parse_args()
+        arg.file = line+".apk"
+        init = APKLeaks(arg)
 	    try:
 	        init.integrity()
 	        init.decompile()
