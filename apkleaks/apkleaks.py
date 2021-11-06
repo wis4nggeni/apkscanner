@@ -159,6 +159,7 @@ class APKLeaks:
 			if os.path.exists(fileold):
 				print("Comparing new and old results")
 				result = filecmp.cmp(fileold, filenew, shallow=False)
+				print("Different? : "+result)
 				if result:
 					print("New Findings on : "+self.file)
 					os.remove(fileold)
