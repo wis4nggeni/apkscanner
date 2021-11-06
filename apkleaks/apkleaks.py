@@ -154,21 +154,21 @@ class APKLeaks:
 		if self.scanned:
 			self.fileout.write("%s" % (json.dumps(self.out_json, indent=4) if self.json else ""))
 			self.fileout.close()
-			#fileold = "/results/" + self.package+".txt"
-			#filenew = self.output
-			#if os.path.exists(fileold):
-			#	a = "compare txt, if different replace, if same do nothing"
-			#	result = filecmp.cmp(fileold, filenew, shallow=False)
-			#	if result:
-			#		print("New Findings on : "+self.file)
-			#		os.remove(fileold)
-			#		shutil.move(filenew, fileold)
-			#	else:
-			#		print("No new findings")
-			#		os.remove(filenew)
-			#else:
-			#	print("first time scanned, saving results")
-			#	shutil.move(filenew, fileold)
+			fileold = os.path.expanduser("~/apkscanner/results/temp/"+self.package+".txt")
+			filenew = self.output
+			if os.path.exists(fileold):
+				a = "compare txt, if different replace, if same do nothing"
+				result = filecmp.cmp(fileold, filenew, shallow=False)
+				if result:
+					print("New Findings on : "+self.file)
+					os.remove(fileold)
+					shutil.move(filenew, fileold)
+				else:
+					print("No new findings")
+					os.remove(filenew)
+			else:
+				print("first time scanned, saving results")
+				shutil.move(filenew, fileold)
 			print("%s\n** Results saved into '%s%s%s%s'%s." % (col.HEADER, col.ENDC, col.OKGREEN, self.output, col.HEADER, col.ENDC))
 		else:
 			self.fileout.close()
