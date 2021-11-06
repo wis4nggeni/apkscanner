@@ -157,7 +157,7 @@ class APKLeaks:
 			fileold = os.path.expanduser("~/apkscanner/results/"+self.package+".txt")
 			filenew = self.output
 			if os.path.exists(fileold):
-				a = "compare txt, if different replace, if same do nothing"
+				print("Comparing new and old results")
 				result = filecmp.cmp(fileold, filenew, shallow=False)
 				if result:
 					print("New Findings on : "+self.file)
@@ -169,7 +169,7 @@ class APKLeaks:
 			else:
 				print("first time scanned, saving results")
 				shutil.move(filenew, fileold)
-			print("%s\n** Results saved into '%s%s%s%s'%s." % (col.HEADER, col.ENDC, col.OKGREEN, self.output, col.HEADER, col.ENDC))
+			print("%s\n** Results saved into '%s%s%s%s'%s." % (col.HEADER, col.ENDC, col.OKGREEN, fileold, col.HEADER, col.ENDC))
 		else:
 			self.fileout.close()
 			os.remove(self.output)
