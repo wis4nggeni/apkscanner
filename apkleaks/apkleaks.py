@@ -34,7 +34,7 @@ class APKLeaks:
 		self.main_dir = os.path.dirname(os.path.realpath(__file__))
 		#self.output = self.main_dir+"/results/temp/"+filename+".txt"
 		#self.fileout = open(self.output, 'w')
-		self.output = tempfile.mkstemp(suffix=".%s" % ("json" if self.json else "txt"), prefix=self.prefix, dir=os.path.expanduser("~/apkscanner/results/temp/"))
+		self.output = tempfile.mkstemp(suffix=".%s" % ("json" if self.json else "txt"), prefix=self.prefix, dir=os.path.expanduser("~/apkscanner/results/temp/"))[1]
 		print(self.output)
 		self.fileout = open(self.output, "w")
 		self.pattern = os.path.join(str(Path(self.main_dir).parent), "config", "regexes.json") if args.pattern is None else args.pattern
