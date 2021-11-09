@@ -167,7 +167,7 @@ class APKLeaks:
 				line_no = 1
 				print()
 				while file_1_line != '' or file_2_line != '':
-					# Removing whitespaces
+					# Removaing whitespaces
 					file_1_line = file_1_line.rstrip()
 					file_2_line = file_2_line.rstrip()
 					# Compare the lines from both file
