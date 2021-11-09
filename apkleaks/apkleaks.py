@@ -158,15 +158,32 @@ class APKLeaks:
 			filenew = self.output
 			if os.path.exists(fileold):
 				print("Comparing new and old results")
-				result = filecmp.cmp(fileold, filenew, shallow=False)
-				print("Different? : "+result)
-				if result:
-					print("New Findings on : "+self.file)
-					os.remove(fileold)
-					shutil.move(filenew, fileold)
+				file_1 = open(fileold, 'r')
+				file_2 = open(filenew, 'r')
+				print("Comparing files ", " @ " + 'file1.txt', " # " + 'file2.txt', sep='\n')
+				file_1_line = file_1.readline()
+				file_2_line = file_2.readline()
+				# Use as a COunter
+				line_no = 1
+				print()
+				while file_1_line != '' or file_2_line != '':
+					# Removing whitespaces
+					file_1_line = file_1_line.rstrip()
+					file_2_line = file_2_line.rstrip()
+					# Compare the lines from both file
+					if file_1_line != file_2_line:
+						print("New Findings on : " + self.file)
+						os.remove(fileold)
+						shutil.move(filenew, fileold)
+						break
+					# Read the next line from the file
+					file_1_line = file_1.readline()
+					file_2_line = file_2.readline()
+					line_no += 1
 				else:
-					print("No new findings")
 					os.remove(filenew)
+				file_1.close()
+				file_2.close()
 			else:
 				print("first time scanned, saving results")
 				shutil.move(filenew, fileold)
