@@ -172,6 +172,7 @@ class APKLeaks:
 					file_2_line = file_2_line.rstrip()
 					# Compare the lines from both file
 					if file_1_line != file_2_line:
+						print(file_1_line + "tidak sama dengan" + file_2_line)
 						print("New Findings on : " + self.file)
 						os.remove(fileold)
 						shutil.move(filenew, fileold)
